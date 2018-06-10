@@ -24,6 +24,7 @@ namespace ListViewExercise
 
             InitializeComponent();
 
+
             FillListView(searchService.GetRecentSearches());
         }
 
