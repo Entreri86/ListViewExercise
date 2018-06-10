@@ -11,7 +11,7 @@ namespace ListViewExercise
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new ListViewAirBnb();
 		}
 
 		protected override void OnStart ()

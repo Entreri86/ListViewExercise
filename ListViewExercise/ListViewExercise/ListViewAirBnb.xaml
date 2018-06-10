@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListViewExercise.ListViewAirBnb">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"/>
+        <!--Controlar el Padding de iOS para el nivel superior-->
+    </ContentPage.Padding>
+    <StackLayout>
+        <SearchBar Placeholder="Buscar..." HorizontalTextAlignment="Center" TextChanged="OnSearchTextChanged" TextColor="Aquamarine" x:Name="searchBar"/>        
+        <ListView x:Name="searchListView" IsPullToRefreshEnabled="True" 
+                  Refreshing="OnRefreshListView" IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Title}" ItemSelected="OnSearchSelected"
+                  ItemTapped="searchListView_ItemTapped"> 
+            <!--Agrupamos por titulo dinamicamente y mostramos el item segun selección-->             
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <TextCell Text="{Binding Location}" Detail="{Binding Completo}"> <!--Binding Completo para obtener las fechas con el metodo de Search-->
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Eliminar" IsDestructive="True" Clicked="OnDeleteClicked" CommandParameter="{Binding .}"/>
+                            <!--Binding "." para disponer del objeto completo en el modelo-->
+                        </TextCell.ContextActions>                        
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
