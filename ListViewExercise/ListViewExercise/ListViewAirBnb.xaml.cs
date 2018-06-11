@@ -41,9 +41,9 @@ namespace ListViewExercise
 
         private void OnSearchSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selected = sender as Search;
-
-            DisplayAlert("Selected" , selected.Location, "OK");
+            var selected = e.SelectedItem as Search;
+            
+            //DisplayAlert("Selected" , selected.Location, "OK");
         }
 
         private void OnDeleteClicked(object sender, EventArgs e)
@@ -71,9 +71,9 @@ namespace ListViewExercise
 
         private void searchListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selected = sender as Search;
+            var selected = e.Item as Search;
 
-            DisplayAlert("Selected", selected.Location, "OK");
+            DisplayAlert("Selected", selected.Location , "OK");
             
 
         }
